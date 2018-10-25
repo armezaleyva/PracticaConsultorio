@@ -18,6 +18,8 @@ namespace PracticaConsultorio {
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        DateTime fechaInicioConsulta;
+
         public MainWindow() {
             InitializeComponent();
         }
@@ -55,7 +57,51 @@ namespace PracticaConsultorio {
         }
 
         private void btnCrearNuevoPaciente_Click(object sender, RoutedEventArgs e) {
+            gridFormularioConsulta.Visibility = Visibility.Collapsed;
             gridNuevoPaciente.Visibility = Visibility.Visible;
+        }
+
+        private void lstPacientes_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            if (lstPacientes.SelectedIndex != 1) {
+                btnNuevaConsulta.IsEnabled = true;
+            } else {
+                btnNuevaConsulta.IsEnabled = false;
+            }
+        }
+
+        private void btnFormularioConsulta_Click(object sender, RoutedEventArgs e) {
+            gridFormularioConsulta.Visibility = Visibility.Visible;
+            var paciente = Datos.pacientes[lstPacientes.SelectedIndex];
+            txtNombrePacienteConsulta.Text = paciente.Nombre;
+            txtEdadPacienteConsulta.Text = paciente.Edad.ToString();
+            txtAlturaPacienteConsulta.Text = paciente.Altura.ToString();
+            txtPesoPacienteConsulta.Text = paciente.Peso.ToString();
+            txtEnfermedadesCronicasPacienteConsulta.Text = paciente.EnfermedadesCronicas;
+
+            fechaInicioConsulta = DateTime.Now;
+            txtFechaConsulta.Text = fechaInicioConsulta.ToString();
+        }
+
+        private void btnGuardarConsulta_Click(object sender, RoutedEventArgs e) {
+            Consulta nuevaConsulta = new Consulta();
+            nuevaConsulta.PacienteActual = Datos.pacientes[lstPacientes.SelectedIndex];
+            nuevaConsulta.Sintomas = txtSintomasConsulta.Text;
+            nuevaConsulta.Diagnostico = txtDiagnosticoConsulta.Text;
+            nuevaConsulta.Receta = txtRecetaConsulta.Text;
+
+            Datos.consultas.Add(nuevaConsulta);
+
+            txtNombrePacienteConsulta.Text = "";
+            txtEdadPacienteConsulta.Text = "";
+            txtAlturaPacienteConsulta.Text = "";
+            txtPesoPacienteConsulta.Text = "";
+            txtEnfermedadesCronicasPacienteConsulta.Text = "";
+
+            txtSintomasConsulta.Text = "";
+            txtDiagnosticoConsulta.Text = "";
+            txtRecetaConsulta.Text = "";
+            txtFechaConsulta.Text = "";
+            gridFormularioConsulta.Visibility = Visibility.Collapsed;
         }
     }
 }

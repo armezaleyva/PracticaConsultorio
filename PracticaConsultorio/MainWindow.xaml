@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="lstPacientes" HorizontalAlignment="Left" Height="365" Margin="10,10,0,0" VerticalAlignment="Top" Width="114"/>
+        <ListBox x:Name="lstPacientes" HorizontalAlignment="Left" Height="365" Margin="10,10,0,0" VerticalAlignment="Top" Width="114" SelectionChanged="lstPacientes_SelectionChanged"/>
         <Button x:Name="btnCrearNuevoPaciente" Content="Nuevo Paciente" HorizontalAlignment="Left" Margin="10,380,0,0" VerticalAlignment="Top" Width="114" Click="btnCrearNuevoPaciente_Click"/>
-        <Button Content="Nueva Consulta" HorizontalAlignment="Left" Margin="139,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="btnNuevaConsulta" Content="Nueva Consulta" HorizontalAlignment="Left" Margin="139,10,0,0" VerticalAlignment="Top" Width="100" IsEnabled="False" Click="btnFormularioConsulta_Click"/>
         <Grid x:Name="gridNuevoPaciente" HorizontalAlignment="Left" Height="380" Margin="129,30,0,0" VerticalAlignment="Top" Width="655" Visibility="Collapsed">
             <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Nombre:" VerticalAlignment="Top"/>
             <TextBox x:Name="txtNombre" HorizontalAlignment="Left" Height="23" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635"/>
@@ -26,6 +26,27 @@
             <TextBlock HorizontalAlignment="Left" Margin="10,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Enfermedades Cr"/><Run Text="ónicas"/><Run Text=":"/></TextBlock>
             <TextBox x:Name="txtEnfermedadesCronicas" HorizontalAlignment="Left" Height="23" Margin="10,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635"/>
             <Button x:Name="btnNuevoPaciente" Content="Guardar" HorizontalAlignment="Left" Margin="570,356,0,0" VerticalAlignment="Top" Width="75" Click="btnNuevoPaciente_Click"/>
+        </Grid>
+        <Grid x:Name="gridFormularioConsulta" HorizontalAlignment="Left" Height="376" Margin="129,34,0,0" VerticalAlignment="Top" Width="655" Visibility="Collapsed">
+            <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Paciente:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtNombrePacienteConsulta" HorizontalAlignment="Left" Height="23" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635" IsEnabled="False"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Edad:"/>
+            <TextBox x:Name="txtEdadPacienteConsulta" HorizontalAlignment="Left" Height="23" Margin="10,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Síntomas"/><Run Text=":"/></TextBlock>
+            <TextBox x:Name="txtSintomasConsulta" HorizontalAlignment="Left" Height="46" Margin="10,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Diagnóstico"/><Run Text=":"/></TextBlock>
+            <TextBox x:Name="txtDiagnosticoConsulta" HorizontalAlignment="Left" Height="23" Margin="10,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,229,0,0" TextWrapping="Wrap" Text="Receta:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtRecetaConsulta" HorizontalAlignment="Left" Height="44" Margin="10,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635"/>
+            <TextBlock HorizontalAlignment="Left" Margin="135,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Altura:"/>
+            <TextBox x:Name="txtAlturaPacienteConsulta" HorizontalAlignment="Left" Height="23" Margin="135,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+            <TextBlock HorizontalAlignment="Left" Margin="260,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Peso:"/>
+            <TextBox x:Name="txtPesoPacienteConsulta" HorizontalAlignment="Left" Height="23" Margin="260,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+            <TextBlock HorizontalAlignment="Left" Margin="385,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Enfermedades "/><Run Text="crónicas"/><Run Text=":"/></TextBlock>
+            <TextBox x:Name="txtEnfermedadesCronicasPacienteConsulta" HorizontalAlignment="Left" Height="23" Margin="385,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" IsEnabled="False"/>
+            <Button x:Name="btnGuardarConsulta" Content="Guardar Consulta" HorizontalAlignment="Left" Margin="530,354,0,0" VerticalAlignment="Top" Width="115" Click="btnGuardarConsulta_Click"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,298,0,0" TextWrapping="Wrap" Text="Fecha:" VerticalAlignment="Top"/>
+            <TextBox x:Name="txtFechaConsulta" HorizontalAlignment="Left" Height="23" Margin="10,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="635"/>
         </Grid>
 
     </Grid>

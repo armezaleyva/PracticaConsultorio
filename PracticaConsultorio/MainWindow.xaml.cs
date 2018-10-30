@@ -62,7 +62,7 @@ namespace PracticaConsultorio {
         }
 
         private void lstPacientes_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            if (lstPacientes.SelectedIndex != 1) {
+            if (lstPacientes.SelectedIndex != -1) {
                 btnNuevaConsulta.IsEnabled = true;
             } else {
                 btnNuevaConsulta.IsEnabled = false;
@@ -101,7 +101,17 @@ namespace PracticaConsultorio {
             txtDiagnosticoConsulta.Text = "";
             txtRecetaConsulta.Text = "";
             txtFechaConsulta.Text = "";
+
+            var consultas = Datos.consultas;
+
             gridFormularioConsulta.Visibility = Visibility.Collapsed;
+        }
+
+        private void btnHistorialConsultas_Click(object sender, RoutedEventArgs e) {
+            var paciente = Datos.pacientes[lstPacientes.SelectedIndex];
+
+            var ventanaHistorial = new HistorialConsultasWindow(paciente);
+            ventanaHistorial.Show();
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace PracticaConsultorio {
-    class Paciente {
+    public class Paciente {
         public string Nombre { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
